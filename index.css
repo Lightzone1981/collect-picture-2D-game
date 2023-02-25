@@ -1,0 +1,164 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+#root {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.5rem;
+	background-color: #1a1a1a;
+	padding-top: 2rem;
+}
+
+.container {
+	/* margin: 0 auto; */
+
+	background-color: rgb(43, 43, 43);
+	padding: 1rem;
+	border-radius: 5px;
+
+	width: 30rem;
+	height: 30rem;
+	display: grid;
+	gap: 0.2rem;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+}
+
+.cell {
+	background-color: rgb(255, 255, 255);
+	font-size: 1.2rem;
+	color: rgb(255, 255, 255);
+	text-shadow: 0 0 15px rgba(0, 0, 0, 1);
+	font-family: arial;
+	padding: 0.5rem;
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-end;
+	border-radius: 2px;
+	transition: 0.3s;
+	background-position: center;
+	background-repeat: none;
+	background: linear-gradient(63deg, #8c8c8c 0%, #d6d6d6 46%, #ffffff 100%);
+}
+[scale]:hover {
+	box-shadow: 0.2rem 0.2rem 1rem rgba(0, 0, 0, 0.5);
+	background: linear-gradient(63deg, #ae6d22 0%, #fecc41 46%, #dda551 100%);
+	cursor: pointer;
+
+	transform: scale(1.03);
+	transition: 0.3s;
+	z-index: 5;
+}
+.empty {
+	opacity: 0;
+	cursor: auto;
+}
+[hide-numbers] {
+	color: transparent;
+	font-size: 0;
+}
+
+.buttons-container {
+	padding: 1rem;
+	display: flex;
+	gap: 2rem;
+	justify-content: center;
+}
+#reset-button,
+#view-button,
+#numbers-checkbox-label {
+	width: 2rem;
+	height: 2rem;
+	border: none;
+	opacity: 0.2;
+	cursor: pointer;
+	transition: 0.3s;
+}
+#reset-button:hover,
+#view-button:hover {
+	transition: 0.3s;
+	transform: scale(1.05);
+	opacity: 1;
+}
+
+#reset-button {
+	background: url("./assets/reset.svg") center/contain no-repeat;
+}
+
+#view-button {
+	background: url("./assets/picture.svg") center/contain no-repeat;
+	cursor: auto;
+}
+
+#numbers-checkbox {
+	position: absolute;
+	z-index: -100;
+	opacity: 0;
+}
+#numbers-checkbox:checked + #numbers-checkbox-label {
+	transition: 0.3s;
+	opacity: 1;
+}
+
+#numbers-checkbox-label {
+	background: url("./assets/numbers.svg") center/contain no-repeat;
+}
+
+#numbers-checkbox-label:hover {
+	transform: scale(1.05);
+}
+
+#big-image {
+	position: absolute;
+	width: 30rem;
+	height: 30rem;
+	top: 3rem;
+	z-index: 5;
+	background: url("./assets/mountains.jpg") center/contain no-repeat;
+	opacity: 1;
+}
+[hidden] {
+	opacity: 0;
+}
+
+@media (max-width: 768px) {
+	.container, #big-image {
+		width: 80vw;
+		height: 80vw;
+		padding: 0;
+	}
+    #big-image {
+		width: 80vw;
+		height: 80vw;
+        top: 2rem;
+	}
+}
+
+
+
+@media (max-width: 1024px) and (orientation: landscape) {
+	.buttons-container {
+		flex-direction: column ;
+	}
+	.container {
+		width: 80vh;
+		height: 80vh;
+		padding: 0;
+	}
+    #big-image {
+		width:80vh;
+		height: 80vh;
+        top: 0;
+	}
+    #root{
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+}
